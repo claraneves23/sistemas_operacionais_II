@@ -145,7 +145,7 @@ O FHS define a estrutura de diretórios do Linux, garantindo organização e pad
 
 - **Atenção** 🚨
 
-*Diretório raíz NÃO É SINÔNIMO de diretório nativo, diretório nativo é de onde o usuário veio e diretório raiz é o diretório que contem todos os diretório, é representado por ´/`* 
+*Diretório raíz NÃO É SINÔNIMO de diretório nativo, diretório nativo é de onde o usuário veio e diretório raiz é o diretório que contem todos os diretórios, é representado por ´/`* 
 
 ### Identificando o conteúdo pelas cores padrão do LINUX
 
@@ -158,7 +158,7 @@ O FHS define a estrutura de diretórios do Linux, garantindo organização e pad
   <img src= "https://github.com/claraneves23/sistemas_operacionais_II/blob/main/Captura%20de%20tela%202025-03-11%20184951.png">
 </p>
 
-*dica: o comando `clear`limpa a tela.
+*dica: o comando `clear`limpa a tela.*
 
 ### Ls e a utilização de parâmetros
 
@@ -166,15 +166,81 @@ O FHS define a estrutura de diretórios do Linux, garantindo organização e pad
 - `ls ..`: listar o conteúdo do diretório anterior.
 - `ls ~`: ver o diretório nativo sem se deslocar do diretório corrente.
 - `ls -l`: listar os arquivos pelo formato longo
-- `ls -l | more: vizualizar o formato longo de sem o scroll
-* dica: para interromper use `ctrl +c`
+- `ls -l | more`: vizualizar o formato longo sem o scroll
+  
+  *dica: para interromper use `ctrl +c`*
+  
+- `ls -a`: exibir arquivos ocultos.
+- `ls -f`: exibição dos items com símbolos
+  ```
+  -- arquivos simples (sem símbolo)
+  -- diretórios (com /)
+  -- arquivos linkados (com @)
+  ```
+- `ls -t`: listar arquivos por ordem de data de modificação. Arquivos modificados recentemente são exibidos primeiro.
+- `ls -1`: fazer com que os arquivos do diretório sejam listados por linha, um em cada linha.
 
+### Interpretando as informações sobre arquivos em LINUX
 <p align="center">
-  <img src= "https://github.com/claraneves23/sistemas_operacionais_II/blob/main/Captura%20de%20tela%202025-03-11%20184951.png">
+  <img src= "https://github.com/claraneves23/sistemas_operacionais_II/blob/main/Captura%20de%20tela%202025-03-11%20191520.png">
 </p>
- 
 
+- 1° coluna: nível de permissão de quem possi acesso ao item da linha, sendo o primeiro caractere referente ao formato(arquivo, diretório, link e ec), e os outros nove (3 grupos de 3) referentes, em ordem esquerda-direita, ao usuário, o grupo do usuário e outros. Sendo o caractere "r" a permissão de leitura, o "w" de escrita e o "x" de execução.
+  
+- 2° coluna: quantidade de usuários que possuem acesso.
 
+- 3° coluna: usuário que gerou o arquivo/diretório.
+
+- 4° coluna: grupo que usa o arquivo/diretório.
+
+ - 5° coluna: tamanho em bytes do arquivo.
+
+ - 6° coluna: data de criação do arquivo.
+
+ - 7° coluna: horário de criação do arquivo.
+
+ - 8° coluna: nome do arquivo
+
+### Criar arquivo vazio
+
+` touch <nome_do_arquivo>`
+
+### Metacaracteres
+- `*`: usado para substituir um conjunto de caracteres.
+```
+[root@styx home]# ls texto**
+texto123 texto2 texto34 textoabc texton
+
+[root@styx home]# ls *texto
+13texto  1texto atexto
+```
+- `?`: usado para substituir um único caracter.
+```
+[root@styx home]# ls texto?
+texton
+
+[root@styx home]# ls *texto???
+texto123 textoabc
+```
+- `[]`: usados para gerar uma lista de caracteres.
+```
+[root@styx home]# ls [1a3]texto
+1texto atexto
+
+[root@styx home]# ls texto[123n]
+texto2  texton
+```
+- `{}`: usados para gerar uma seguencia de caracteres separados por vírgula.
+```
+[root@styx home]# ls {1,a,b,13}texto
+ls: btexto: arquivo ou diretório não encontrado
+13texto 1texto atexto
+
+[root@styx home]# ls texto{1,2,n,124,abc}
+ls: texto1: arquivo ou diretório não encontrado
+ls: texto124: arquivo ou diretório não encontrado
+texto2 textoabc texton
+```
 
 
 
