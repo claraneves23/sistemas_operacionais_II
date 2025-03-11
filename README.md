@@ -145,8 +145,13 @@ O FHS define a estrutura de diretórios do Linux, garantindo organização e pad
 
 - **Atenção** 🚨
 
-Diretório raiz NÃO É SINÔNIMO de diretório nativo, diretório nativo é de onde o usuário veio e diretório raiz é o diretório que contem todos os diretório, é representado por ´/` 
+*Diretório raiz NÃO É SINÔNIMO de diretório nativo, diretório nativo é de onde o usuário veio e diretório raiz é o diretório que contem todos os diretório, é representado por ´/`* 
+
+<p align="center">
+  <img src= "https://github.com/claraneves23/sistemas_operacionais_II/blob/main/Captura%20de%20tela%202025-03-11%20184951.png">
+</p>
  
+
 
 
 
