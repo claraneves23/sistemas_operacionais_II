@@ -139,6 +139,17 @@ reboot  # Reinicia o sistema imediatamente.
 
 O FHS define a estrutura de diretórios do Linux, garantindo organização e padronização do sistema.
 
+# Aula 03
+
+## Explorando o comando `ls`
+
+- **Atenção** 🚨
+
+Diretório raiz NÃO É SINÔNIMO de diretório nativo, diretório nativo é de onde o usuário veio e diretório raiz é o diretório que contem todos os diretório, é representado por ´/` 
+ 
+
+
+
 
 
 
