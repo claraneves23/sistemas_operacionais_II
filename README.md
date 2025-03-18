@@ -32,13 +32,6 @@ Interpretador de Comandos: shell, interpreta os comandos feitos pelo usuário e 
 
 *Interpretador de comando mais usado é o bash*
 
-Os comandos podem ser enviados de forma interativa ou não interativa.
-
-
-* Interativa: comandos digitados e passados pelo interpretador um a um. Computador mais dependente do usuário para executar uma tarefa.
-
-* Não interativa: scripts para o computador executar os comandos na ordem encontrada no arquivo. O computador segue as ordens do script para executar rotinas. O script pode checar qual será o próximo comando dependendo do término do anterior.
-
 ## Aula 02
 Linux: Tipos de Usuários e Comandos Básicos
 
@@ -139,9 +132,9 @@ reboot  # Reinicia o sistema imediatamente.
 
 O FHS define a estrutura de diretórios do Linux, garantindo organização e padronização do sistema.
 
-# Aula 03
+## Aula 03
 
-## Explorando o comando `ls`
+### Explorando o comando `ls`
 
 - **Atenção** 🚨
 
@@ -242,15 +235,128 @@ ls: texto124: arquivo ou diretório não encontrado
 texto2 textoabc texton
 ```
 
+## Aula 04
 
+## Explorando os diretórios no Linux
 
+- cd: serve para acessae e mudar de diretório corrente.
 
+Então pensemos num cenário, imagine que você gostaria de ir para o diretório home, estando no diretório root, como devemos proceder:​
+```
+[root@styx root]# cd /home
+[root@styx home]# 
+```
+```
+/ (diretório raiz)
+│
+├── root 
+│
+└── home 
+```
+Logo, é possível entender que:
+- cd /(caminho): parte do raíz até o último diretório passado como referência.
 
+Para acessar um diretório que está hierarquicamente exatamente um nível abaixo ao seu podemos:
+- 1° modo: usando o conceito anterior indo da raíz até o destino desejado, temos:
+```
+[root@styx home]# cd /home/fatec
+[root@styx fatec]#
 
+```
+- 2° modo: podemos usar o nome do diretório que está a um nível abaixo:
+```
+[root@styx home]# cd fatec
+[root@styx fatec]#
+```
+```bash
+/ (diretório raiz)
+│
+└── home 
+    ├── fatec
+```
+Já para um arquivo que não está exatamente abaixo:
+```bash
+/ (diretório raiz)
+│
+└── home 
+    ├── fatec
+         ├── CPD
+```
+- 1° modo:
+```
+[root@styx home]# cd /home/fatec/CPD
+[root@styx CPD]#
+```
+- 2° modo:
+ ```
+[root@styx home]# cd fatec/CPD
+[root@styx CPD]#
+```
+- cd..: para ir para o diretório que está um nível acima do seu.
+- cd~: para ir para o diretório nativo.
+- cd-: retorna para o último diretório acessado.
+  
+#### Atenção 🚨
+- Manipular arquivos somente no home.
+  
+#### Comando Tree
 
+- tree: auxilia na vizualização da estrutura FHS.
+```
+[root@styx fatec]# tree
+.
+|-- CPD
+|-- lab2
+|-- prova
+|-- teste
+'-- ver -> prova
+1 directory, 4 files
+[root@styx fatec]# 
+```
+- tree -d: para visualizar apenas os diretórios da árvore.
 
+#### Criar diretórios
+- mkdir <nome_do_diretorio>: cria um diretório.
+- mkdir -p <dir_1>/<dir_2>/<dir_3>: cria uma estrutura em árvore
+```
+[root@styx home]# mkdir -p lista/atividade/tarefa
 
+/ (diretório raiz)
+│
+└── home 
+    ├── lista
+         ├── atividade
+                ├── tarefa
+```
+Para criar diretórios todos no mesmo nível:
+- mkdir dir_1 dir_2 dir_3
+- mkdir dir_{1,2,3}
 
+#### Apagar um diretório
+
+Para apagar um diretório é necessário obedecer duas condições iniciais:
+- O diretório que será apagado deve estar vazio.
+- Para apagar o diretório é necessário que esteja pelo menos um nível acima.
+
+Para apagar diretórios:
+- rmdir dir_1 dir_2 dir_3
+- rmdir dir_{1,2,3}
+
+Para apagar a estrutura:
+- rmdir -p <dir_1>/<dir_2>/<dir_3>
+
+**Atenção** 🚨
+
+Para apagar um diretório de forma forçada (não importa se não está vazio):
+- rm -rf <dir_1>
+
+### PWD
+O comando `pwd` mostra o caminho do diretório que você se encontra até a raíz.
+```
+[root@styx tarefa]# pwd
+/home/lista/atividade/tarefa
+[root@styx tarefa]#
+```
 
 
 
