@@ -223,7 +223,7 @@ texto123 textoabc
 [root@styx home]# ls texto[123n]
 texto2  texton
 ```
-- `{}`: usados para gerar uma seguencia de caracteres separados por vírgula.
+- `{}`: usados para gerar uma sequência de caracteres separados por vírgula.
 ```
 [root@styx home]# ls {1,a,b,13}texto
 ls: btexto: arquivo ou diretório não encontrado
