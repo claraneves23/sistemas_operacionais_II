@@ -357,7 +357,62 @@ O comando `pwd` mostra o caminho do diretório que você se encontra até a raí
 /home/lista/atividade/tarefa
 [root@styx tarefa]#
 ```
+## Aula 06 
+## Comandos de Manipulação de Arquivos no Linux
 
+### **Copiando Arquivos**
+- **Sintaxe:** `[ prompt ]# cp <origem> <destino>`
+- Exemplo: Copiar `version` de `/proc` para `/home/sistop`
+- Diferentes variações do comando podem ser utilizadas.
+- O comando `cp` também permite copiar e renomear simultaneamente.
+
+#### **Cópia com Segurança**
+- Exibir aviso antes de sobrescrever: `cp -i`
+- Copiar mantendo backup do arquivo existente: `cp -b`
+
+### **Copiando Múltiplos Arquivos**
+- Copiar vários arquivos para um único destino.
+- Utilizar metacaracteres para selecionar arquivos.
+
+---
+
+### **Movendo e Renomeando Arquivos**
+- **Sintaxe:** `[ prompt ]# mv <origem> <destino>`
+- O comando `mv` permite:
+  - Mover arquivos entre diretórios.
+  - Renomear arquivos.
+  - Mover e renomear simultaneamente.
+
+**Exemplos:**
+1. Mover `versao` para o diretório root: `mv versao /root/`
+2. Renomear `version` para `teste`: `mv version teste`
+3. Mover e renomear `version~` para `/root/novo`: `mv version~ /root/novo`
+
+---
+
+### **Removendo Arquivos**
+- **Sintaxe:** `[ prompt ]# rm [parâmetros] <arquivo>`
+- Exemplo: Remover `teste` com confirmação: `rm -i teste`
+- Remover arquivos específicos:
+  - Excluir todos com "tex" no nome e os que começam com "v": `rm *tex* v*`
+  
+#### **Parâmetros Importantes**
+- `-i` → Confirmação antes de apagar.
+- `-r` → Remover diretórios recursivamente.
+- `-f` → Forçar remoção sem confirmação.
+
+---
+
+### **Visualizando Arquivos**
+- **Sintaxe:** `[ prompt ]# cat <caminho/arquivo>`
+- Exemplo: Ver o conteúdo de `passwd`: `cat /etc/passwd`
+- Para arquivos grandes, usar `cat | more` para navegação controlada.
+
+**Exemplo de uso do pipe (`|`)**  
+Exibir `group` com paginação:  
+```bash
+cat /etc/group | more
+```
 
 
 
