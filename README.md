@@ -178,7 +178,7 @@ O FHS define a estrutura de diretórios do Linux, garantindo organização e pad
   <img src= "https://github.com/claraneves23/sistemas_operacionais_II/blob/main/Captura%20de%20tela%202025-03-11%20191520.png">
 </p>
 
-- 1° coluna: nível de permissão de quem possi acesso ao item da linha, sendo o primeiro caractere referente ao formato(arquivo, diretório, link e ec), e os outros nove (3 grupos de 3) referentes, em ordem esquerda-direita, ao usuário, o grupo do usuário e outros. Sendo o caractere "r" a permissão de leitura, o "w" de escrita e o "x" de execução.
+- 1° coluna: nível de permissão de quem possi acesso ao item da linha, sendo o primeiro caractere referente ao formato(arquivo, diretório, link e etc), e os outros nove (3 grupos de 3) referentes, em ordem esquerda-direita, ao usuário, o grupo do usuário e outros. Sendo o caractere "r" a permissão de leitura, o "w" de escrita e o "x" de execução.
   
 - 2° coluna: quantidade de usuários que possuem acesso.
 
