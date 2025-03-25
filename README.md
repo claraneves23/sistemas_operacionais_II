@@ -357,7 +357,7 @@ O comando `pwd` mostra o caminho do diretório que você se encontra até a raí
 /home/lista/atividade/tarefa
 [root@styx tarefa]#
 ```
-## Aula 06 
+## Aula 05
 ## Comandos de Manipulação de Arquivos no Linux
 
 ### **Copiando Arquivos**
