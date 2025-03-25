@@ -164,7 +164,7 @@ O FHS define a estrutura de diretórios do Linux, garantindo organização e pad
   *dica: para interromper use `ctrl +c`*
   
 - `ls -a`: exibir arquivos ocultos.
-- `ls -f`: exibição dos items com símbolos
+- `ls -F`: exibição dos items com símbolos
   ```
   -- arquivos simples (sem símbolo)
   -- diretórios (com /)
