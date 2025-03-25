@@ -240,6 +240,9 @@ texto2 textoabc texton
 ## Explorando os diretórios no Linux
 
 - cd: serve para acessae e mudar de diretório corrente.
+- cd ..: volta para o diretório pai.
+- cd~: volta para o diretório nativo.
+- cd-: volta para o diretório corrente que estava antes.
 
 Então pensemos num cenário, imagine que você gostaria de ir para o diretório home, estando no diretório root, como devemos proceder:​
 ```
