@@ -35,28 +35,28 @@ Interpretador de Comandos: shell, interpreta os comandos feitos pelo usuário e 
 ## Aula 02
 Linux: Tipos de Usuários e Comandos Básicos
 
-## Tipos de Usuário
+### Tipos de Usuário
 
 - **Admin (root)**: Possui plenos poderes dentro do sistema Linux.
 - **Grupo**: Usuários que compartilham características em comum.
 
-## Chaves de Acesso
+### Chaves de Acesso
 
-### Administrador (root)
+#### Administrador (root)
 ```bash
 styx login: root
 Password: 123456
 ```
 
-### Usuário Comum
+#### Usuário Comum
 ```bash
 styx login: dora
 Password: dora
 ```
 
-## Formação da Chave de Acesso
+### Formação da Chave de Acesso
 
-### Root
+#### Root
 ```bash
 [root@styx root]#
 ```
@@ -65,7 +65,7 @@ Password: dora
 - **root**: Diretório nativo.
 - **#**: Prompt do root.
 
-### Usuário Comum
+#### Usuário Comum
 ```bash
 [dora@styx dora]$
 ```
@@ -74,7 +74,7 @@ Password: dora
 - **dora**: Diretório nativo.
 - **$**: Prompt do usuário comum.
 
-## Estrutura de Diretórios no Linux
+### Estrutura de Diretórios no Linux
 ```bash
 / (diretório raiz)
 │
@@ -84,16 +84,16 @@ Password: dora
     ├── dora
 ```
 
-## Sair do Ambiente
+### Sair do Ambiente
 
-### Usuário Comum
+#### Usuário Comum
 ```bash
 logout
 exit
 CTRL+D
 ```
 
-### Administrador (root)
+#### Administrador (root)
 ```bash
 shutdown -h now  # Desliga o ambiente para todos os usuários.
 shutdown -h -t 60  # Envia um aviso e desliga em 60 segundos.
@@ -102,7 +102,7 @@ shutdown -r -t 60  # Reinicia o sistema em 60 segundos.
 reboot  # Reinicia o sistema imediatamente.
 ```
 
-## Tipos de Arquivos no Linux
+### Tipos de Arquivos no Linux
 
 - Arquivos que começam com `.` são ocultos.
 - **.txt**: Arquivo de texto.
@@ -111,7 +111,7 @@ reboot  # Reinicia o sistema imediatamente.
 - **.gz**: Arquivo compactado pelo utilitário gzip.
 - **.aspl**: Página de internet em formato hipertexto.
 
-## Comandos Úteis
+### Comandos Úteis
 
 - **Visualizar o conteúdo do diretório atual:**
   ```bash
@@ -128,7 +128,7 @@ reboot  # Reinicia o sistema imediatamente.
   cd /
   ```
 
-## FHS (Hierarquia Padrão do Sistema de Arquivos)
+### FHS (Hierarquia Padrão do Sistema de Arquivos)
 
 O FHS define a estrutura de diretórios do Linux, garantindo organização e padronização do sistema.
 
@@ -237,7 +237,7 @@ texto2 textoabc texton
 
 ## Aula 04
 
-## Explorando os diretórios no Linux
+### Explorando os diretórios no Linux
 
 - cd: serve para acessae e mudar de diretório corrente.
 - cd ..: volta para o diretório pai.
@@ -361,25 +361,25 @@ O comando `pwd` mostra o caminho do diretório que você se encontra até a raí
 [root@styx tarefa]#
 ```
 ## Aula 05
-## Comandos de Manipulação de Arquivos no Linux
+### Comandos de Manipulação de Arquivos no Linux
 
-### **Copiando Arquivos**
+#### **Copiando Arquivos**
 - **Sintaxe:** `[ prompt ]# cp <origem> <destino>`
 - Exemplo: Copiar `version` de `/proc` para `/home/sistop`
 - Diferentes variações do comando podem ser utilizadas.
 - O comando `cp` também permite copiar e renomear simultaneamente.
 
-#### **Cópia com Segurança**
+##### **Cópia com Segurança**
 - Exibir aviso antes de sobrescrever: `cp -i`
 - Copiar mantendo backup do arquivo existente: `cp -b`
 
-### **Copiando Múltiplos Arquivos**
+##### **Copiando Múltiplos Arquivos**
 - Copiar vários arquivos para um único destino.
 - Utilizar metacaracteres para selecionar arquivos.
 
 ---
 
-### **Movendo e Renomeando Arquivos**
+#### **Movendo e Renomeando Arquivos**
 - **Sintaxe:** `[ prompt ]# mv <origem> <destino>`
 - O comando `mv` permite:
   - Mover arquivos entre diretórios.
@@ -393,7 +393,7 @@ O comando `pwd` mostra o caminho do diretório que você se encontra até a raí
 
 ---
 
-### **Removendo Arquivos**
+#### **Removendo Arquivos**
 - **Sintaxe:** `[ prompt ]# rm [parâmetros] <arquivo>`
 - Exemplo: Remover `teste` com confirmação: `rm -i teste`
 - Remover arquivos específicos:
@@ -406,7 +406,7 @@ O comando `pwd` mostra o caminho do diretório que você se encontra até a raí
 
 ---
 
-### **Visualizando Arquivos**
+#### **Visualizando Arquivos**
 - **Sintaxe:** `[ prompt ]# cat <caminho/arquivo>`
 - Exemplo: Ver o conteúdo de `passwd`: `cat /etc/passwd`
 - Para arquivos grandes, usar `cat | more` para navegação controlada.
