@@ -131,7 +131,7 @@ reboot  # Reinicia o sistema imediatamente.
   ls
   ```
 
-- **Acessar o diretório home do usuário:**
+- **Acessar o diretório nativo:**
   ```bash
   cd ~
   ```
