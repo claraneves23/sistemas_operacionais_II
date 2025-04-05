@@ -308,9 +308,6 @@ Já para um arquivo que não está exatamente abaixo:
 [root@styx home]# cd fatec/CPD
 [root@styx CPD]#
 ```
-- cd..: para ir para o diretório que está um nível acima do seu.
-- cd~: para ir para o diretório nativo.
-- cd-: retorna para o último diretório acessado.
   
 #### Atenção 🚨
 - Manipular arquivos somente no home.
