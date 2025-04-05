@@ -416,8 +416,64 @@ Exibir `group` com paginação:
 ```bash
 cat /etc/group | more
 ```
+## Aula 07  
+Comandos Úteis e Gerenciamento no Linux  
 
+### Comandos Básicos  
 
+#### Calendário e Data/Hora  
 
+| Comando | Descrição | Exemplo |  
+|---------|-----------|---------|  
+| `cal`   | Exibe calendário do mês corrente | `cal` |  
+| `cal MM AAAA` | Mostra calendário de um mês/ano específico | `cal 08 2023` |  
+| `date`  | Exibe data e hora atuais | `date` |  
+| `date MMDDhhmmAAAA` | Atualiza data/hora (root) | `date 082711412023` |  
+| `hwclock -w` | Sincroniza hardware clock | `hwclock -w` |  
 
+**Exemplo de formatação de data:**  
+```  
+date "+%d/%m/%Y %H:%M"   Saída: 27/08/2023 11:41  
+```
+
+#### Impressão e Informações do Sistema
+
+| Comando      | Função                          | Exemplo                     |
+|--------------|---------------------------------|-----------------------------|
+| `lpr`        | Envia arquivo para impressora   | `lpr /etc/passwd`           |
+| `lpr -#3`    | Imprime 3 cópias                | `lpr -#3 arquivo.txt`       |
+| `finger`     | Exibe info de usuários          | `finger root`               |
+| `history`    | Lista comandos executados       | `history`                   |
+| `history -c` | Limpa histórico                 | `history -c`                |
+| `uptime`     | Tempo de atividade do sistema   | `uptime`                    |
+
+**Saída do `uptime`:
+```
+20:02:38 up 58 min, 2 users, load average: 0.00, 0.00, 0.00
+```
+
+## Monitoramento do Sistema
+
+### Memória e Processos
+
+| Comando | Descrição                          |
+|---------|-----------------------------------|
+| `free`  | Exibe uso de memória RAM e swap   |
+| `top`   | Monitora processos em tempo real  |
+
+### Editor de Texto vi
+
+| Comando           | Ação                          |
+|-------------------|-------------------------------|
+| `vi arquivo.txt`  | Abre/cria arquivo no vi       |
+| `Esc + a`         | Entra no modo INSERT          |
+| `Esc + dd`        | Deleta linha inteira          |
+| `Esc + :wq`       | Salva e sai                   |
+| `Esc + :q!`       | Sai sem salvar                |
+
+### Links Simbólicos
+
+| Comando  | Função                     | Exemplo                                |
+|----------|----------------------------|----------------------------------------|
+| `ln -s`  | Cria link simbólico        | `ln -s /caminho/origem /caminho/link` |
 
