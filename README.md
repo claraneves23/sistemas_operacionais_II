@@ -457,7 +457,7 @@ date "+%d/%m/%Y %H:%M"   Saída: 27/08/2023 11:41
 | `history -c` | Limpa histórico                 | `history -c`                |
 | `uptime`     | Tempo de atividade do sistema   | `uptime`                    |
 
-**Saída do `uptime`:
+Saída do `uptime`:
 ```
 20:02:38 up 58 min, 2 users, load average: 0.00, 0.00, 0.00
 ```
