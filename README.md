@@ -6,31 +6,44 @@ Disciplina ministrada pela professora Dorotea Garcia
 Lattes:  http://lattes.cnpq.br/8453243844263956
 ## Aula 01
 
-Sistema Operacional: é um conjunto de programas que faz a ligação entre o usuário e o hardware. Ele recebe os comandos do usuário e faz com que o hardware os execute.
+### Conceitos Fundamentais de Sistemas Operacionais e Linux
 
-Linux: criado por Linus Torvalds em 1991, é um sistema operacional de código aberto, gratuito e que segue o padrão POSIX, o mesmo usado pelo Unix. Isso facilita a portabilidade para outros sistemas compatíveis. Como é mantido por uma grande comunidade, recebe melhorias constantes em estabilidade e desempenho.
+#### Sistema Operacional
 
-Interpretador de Comandos (Shell): é o programa que recebe os comandos do usuário e os repassa para o sistema operacional. Ele pode rodar comandos digitados na hora (modo interativo) ou ler e executar comandos de um arquivo (modo não interativo). O shell mais usado no Linux é o bash, mas existem outros como sh, csh e tcsh.
+O **sistema operacional (SO)** é um conjunto de programas que atua como intermediário entre o usuário e o hardware. Sua função principal é receber comandos do usuário e garantir que o hardware os execute corretamente.
 
-Execução de Comandos:
+- **Função principal:** Meio de campo entre hardware e usuário.
+- **Exemplo de ambiente computacional:**  
+  - Hardware + Sistema Operacional + Usuário
 
-Interativa: o usuário digita os comandos um a um, e o sistema os executa imediatamente.
-Não interativa: comandos são escritos em um arquivo (script), e o sistema os executa automaticamente na ordem definida. Isso permite criar rotinas e automações.
+#### Linux
 
-- Sistema Operacional: meio de campo entre hardware e usuário.
+O **Linux** é um sistema operacional de código aberto criado por **Linus Torvalds** em **1991**. É gratuito e compatível com o padrão **POSIX**, o mesmo adotado pelo Unix, o que facilita sua **portabilidade** para sistemas compatíveis.
 
-- Ambiente básico de computação: hardware e software
+- **Características do Linux:**
+  - Open source (código aberto)
+  - Gratuito
+  - Compatível com Unix (via POSIX)
+  - Portável para qualquer sistema compatível com POSIX
+  - Mantido por uma comunidade ativa
+  - Frequentemente atualizado, com foco em **estabilidade**, **desempenho** e **segurança**
 
-- Ambiente automobilístico: máquina + combustível + piloto
+#### Interpretador de Comandos (Shell)
 
-- Ambiente computacional: hardware + sistema operacional + usuário
+O **shell** é o programa responsável por interpretar comandos fornecidos pelo usuário ou por outros programas, e repassá-los ao sistema operacional (mais especificamente ao **kernel**).
 
-Linux: open source, gratuito, compatível com Unix via padrão POSIX, portabilidade para todos os sistemas que atendem o padrão POSIX, constantemente atualizado e optimizado pela comunidade.
+> O shell é a principal ligação entre o usuário, os programas e o kernel.
 
-Interpretador de Comandos: shell, interpreta os comandos feitos pelo usuário e seus programas ao sistema operacional(o kernel).
-(a shell é  intermediário entre o usuário e o kernel). *É a principal ligação entre o usuário, os programas e o kernel.*
+- **Modos de operação:**
+  - **Interativo:** o usuário digita comandos um a um, e o sistema os executa imediatamente.
+  - **Não interativo:** comandos são escritos em um **arquivo script**, permitindo execução automática e criação de **rotinas** ou **automações**.
 
-*Interpretador de comando mais usado é o bash*
+- **Shells comuns no Linux:**
+  - `bash` (mais utilizado)
+  - `sh`
+  - `csh`
+  - `tcsh`
+
 
 ## Aula 02
 Linux: Tipos de Usuários e Comandos Básicos
