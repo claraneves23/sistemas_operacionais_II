@@ -488,17 +488,6 @@ O comando `uname` exibe informações sobre o sistema operacional e o hardware. 
 
 ---
 
-### Exemplos Práticos:
-```
-# Exibir todas as informações:
-uname -a
-
-# Ver apenas o hostname:
-uname -n
-
-# Obter a versão do kernel:
-uname -r
-```
 
 ### Editor de Texto vi
 
