@@ -375,7 +375,7 @@ O comando `pwd` mostra o caminho do diretório que você se encontra até a raí
 
 #### **Copiando Arquivos**
 - **Sintaxe:** `[ prompt ]# cp <origem> <destino>`
-- Exemplo: Copiar `version` de `/proc` para `/home/sistop`
+- Exemplo: Copiar `version` de `/proc` para `/home/sistop` = `[ prompt ]# cp /proc/version /home/sistop`
 - Diferentes variações do comando podem ser utilizadas.
 - O comando `cp` também permite copiar e renomear simultaneamente.
 
@@ -386,7 +386,7 @@ O comando `pwd` mostra o caminho do diretório que você se encontra até a raí
 ##### **Copiando Múltiplos Arquivos**
 - Copiar vários arquivos para um único destino.
 - Utilizar metacaracteres para selecionar arquivos.
-
+- Exemplo: `[ prompt ]# cp ver* /home
 ---
 
 #### **Movendo e Renomeando Arquivos**
@@ -397,7 +397,7 @@ O comando `pwd` mostra o caminho do diretório que você se encontra até a raí
   - Mover e renomear simultaneamente.
 
 **Exemplos:**
-1. Mover `versao` para o diretório root: `mv versao /root/`
+1. Mover `versao` para o diretório root: `mv versao /root`
 2. Renomear `version` para `teste`: `mv version teste`
 3. Mover e renomear `version~` para `/root/novo`: `mv version~ /root/novo`
 
