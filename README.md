@@ -489,7 +489,7 @@ O comando `uname` exibe informações sobre o sistema operacional e o hardware. 
 ---
 
 ### Exemplos Práticos:
-```bash
+```
 # Exibir todas as informações:
 uname -a
 
@@ -498,6 +498,7 @@ uname -n
 
 # Obter a versão do kernel:
 uname -r
+```
 
 ### Editor de Texto vi
 
