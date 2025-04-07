@@ -471,6 +471,34 @@ Saída do `uptime`:
 | `free`  | Exibe uso de memória RAM e swap   |
 | `top`   | Monitora processos em tempo real  |
 
+### Comando `uname` - Parâmetros e Funcionalidades
+
+O comando `uname` exibe informações sobre o sistema operacional e o hardware. Abaixo está uma tabela com seus principais parâmetros:
+
+| Parâmetro | Descrição | Exemplo de Saída |
+|-----------|-----------|------------------|
+| `-a`      | Exibe **todas** as informações do sistema (kernel, hostname, versão, etc.) | `Linux styx 5.15.0-x86_64 #1 SMP ...` |
+| `-s`      | Mostra o **nome do sistema operacional** (kernel) | `Linux` |
+| `-n`      | Exibe o **nome da rede (hostname)** do terminal | `styx` |
+| `-r`      | Mostra a **versão do kernel** | `5.15.0-76-generic` |
+| `-v`      | Exibe a **data da compilação** do kernel | `#1 SMP Thu Jul 6 15:30:00 UTC 2023` |
+| `-m`      | Mostra a **arquitetura da máquina** (CPU) | `x86_64` |
+| `-p`      | Exibe o **tipo do processador** (pode ser igual a `-m`) | `x86_64` |
+| `-o`      | Mostra o **nome do sistema operacional** (geralmente "GNU/Linux") | `GNU/Linux` |
+
+---
+
+### Exemplos Práticos:
+```bash
+# Exibir todas as informações:
+uname -a
+
+# Ver apenas o hostname:
+uname -n
+
+# Obter a versão do kernel:
+uname -r
+
 ### Editor de Texto vi
 
 | Comando           | Ação                          |
