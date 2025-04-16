@@ -585,7 +585,7 @@ joao:x:503:504::/home/joao:/bin/bash
  [prompt]# userdel <login do usuário>​
 ```
 #### **Passo para eliminar o usuário:​**
-- No terminal 1 (Alt F1) e digite: userdel nome-do-usuario
+- No terminal 1 (Alt F1) e digite: `userdel nome-do-usuario`
 - Para ter certeza que a operação foi feita com sucesso, deve-se verificar o arquivo passwd do diretório etc.​
 - Mas se prestar bastante atenção, observará que o diretório joao ainda está no diretório home.​
 - Então, para concluir a exclusão completa do usuário deverá ser eliminado o diretório em um único comando: `[prompt]# rm –rf /home/ nome-do-usuario`
