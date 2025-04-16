@@ -505,3 +505,136 @@ O comando `uname` exibe informações sobre o sistema operacional e o hardware. 
 |----------|----------------------------|----------------------------------------|
 | `ln -s`  | Cria link simbólico        | `ln -s /caminho/origem /caminho/link` |
 
+## Aula 08
+
+### Criando usuário 
+- Essa função compete apenas ao administrador do sistema.
+```
+[prompt]# useradd [parametro] [caminho] [usuario]
+```
+- Verificando a criação do usuário nos arquivos do sistema Linux
+```
+[root@styx root]# cat /etc/passwd
+```
+```
+joao:x:503:504::/home/joao:/bin/bash
+|    |   |   |     |        |
+|    |   |   |     |        |
+|    |   |   |     |        ----------- Informa qual o 
+|    |   |   |     |                 shell (interpretador de comandos) de 
+|    |   |   |     |                      login que o usuário utilizará.
+|    |   |   |     |
+|    |   |   |     ------- Cada usuário do sistema possui uma pasta "home" 
+|    |   |   |             exclusiva, normalmente localizada em 
+|    |   |   |               /home/, mas o diretório pode ser personalizado 
+|    |   |   |               ou até mesmo omitido.
+|    |   |   |
+|    |   |   ------ Indica o GID do usuário, isto é, o número de identificação 
+|    |   |           do grupo do qual ele faz parte. Um mesmo usuário pode |   |    |   |           participar de até 32 grupos.
+|    |   |
+|    |   |
+|    |   ------ Indica o número UID, é número que serve para identificar o | | |    |   usuário.
+|    |
+|    |
+|    |
+|    ------------ Indica a senha do usuário, a letra *x* informa que a senha 
+|   está armazenada e protegida dentro do arquivo /etc/shadow. Se houver um 
+|   (*)asterisco no lugar, significa que a conta está desativada. 
+|
+----------- nome do login do usuário, esse nome não pode ser igual a outro já existente no sistema e, geralmente é limitado a 32 caracteres.  
+```
+### Definindo senha do usuário
+```
+[prompt]# passwd <login do usuário>​
+```
+- Verificando a criação do usuário nos arquivos do sistema Linux
+```
+[root@styx root]# cat /etc/shadow
+```
+#### **Verificando a criação da senha, temos:​**
+- Nome de acesso​
+- Senha criptografada​
+- Ultima mudança de senha​
+- Dias até que a senha possa ser alterada novamente​
+- Dias antes que uma alteração seja necessária​
+- Dias de avisos antes da expiração da senha​
+- Dias entre expiração e desativação​
+- Data de expiração​
+- Flag especial​
+
+### Bloquear temporariamente um usuário
+```
+[root@styx root]# passwd -l nome-do-usuario
+```
+### Desbloquear um usuário
+```
+[root@styx root]# passwd -u nome-do-usuario
+```
+### Acessar outro terminal
+```
+ Alt F[numero do terminal que deseja acessar]
+```
+- Exemplo: acessar o segundo terminal
+```
+ Alt F2
+```
+*Para sair é exit, logout ou Ctrl D e não tem acesso aos comandos específicos do administrador (root).*
+### Eliminando usuário
+*Para eliminar um usuário é necessário que o mesmo não esteja logado.*
+```
+ [prompt]# userdel <login do usuário>​
+```
+#### **Passo para eliminar o usuário:​**
+- No terminal 1 (Alt F1) e digite: userdel nome-do-usuario
+- Para ter certeza que a operação foi feita com sucesso, deve-se verificar o arquivo passwd do diretório etc.​
+- Mas se prestar bastante atenção, observará que o diretório joao ainda está no diretório home.​
+- Então, para concluir a exclusão completa do usuário deverá ser eliminado o diretório em um único comando: `[prompt]# rm –rf /home/ nome-do-usuario`
+
+###  Criando um grupo
+```
+ [prompt]#  groupadd <nome do grupo>​
+```
+- Verificando a criação:
+```
+ [prompt]#  cat /etc/group
+```
+###  Administrando um grupo
+| Comando      | Função                          | Exemplo                     |
+|--------------|---------------------------------|-----------------------------|
+| `gpasswd nm_gp` | Cria senha do grupo   | `gpasswd cpd` |
+| `gpasswd -r nm_gp` | Remover senha do grupo| `gpasswd -r cpd` |
+| `gpasswd -a nm_user nm_gp`| Adiciona usuário no grupo | `gpasswd -a dora cpd`               |
+| `gpasswd -a nm_user nm_gp`    | Apaga usuário no grupo       | `gpasswd -a dora cpd`                   |
+| `gpasswd -M nm1 nm2 nm_gp ` | Cria vários membros em um grupo            | `gpasswd -M dora mia cpd `                |
+
+- Sempre verificar usando:
+```
+ [prompt]#  cat /etc/group
+```
+### Verificando a identificação do usuário
+Após criar usuários e grupos, o comando `id` é usado para exibir o UID do usuário e os GIDs dos grupos aos quais ele pertence.
+```
+ [prompt]# id <login usuário>​ 
+```
+- Utilizando sem nenhuma opção o comando id retorna os dados do usuário corrente.​
+```
+ [prompt]# id​ 
+```
+- Quando informamos o nome de um usuário como opção, ele nos retorna as informações do usuário indicado.​
+```
+ [prompt]$ id​ nome_usuario
+```
+### Modificando qualquer tipo de informação relativa ao usuário
+| Comando | O que faz | Explicação |
+|--------|-----------|------------|
+| `usermod -G nome_do_grupo usuario` | Adiciona grupos secundários | Define novos grupos adicionais para o usuário (substitui os anteriores). |
+| `usermod -g grupo_principal usuario` | Define grupo primário | Altera o grupo principal ao qual o usuário pertence. |
+| `usermod -c "descrição" usuario` | Adiciona comentário | Insere ou altera o campo de comentários (descrição) do usuário. |
+| `usermod -d /novo/diretorio usuario` | Muda diretório home | Define um novo diretório pessoal (home) para o usuário. |
+| `usermod -s /caminho/do/shell usuario` | Altera o shell padrão | Define qual shell o usuário utilizará (ex: /bin/bash ou /bin/false). |
+| `usermod -L usuario` | Bloqueia a conta | Trava a conta do usuário adicionando "!" no campo de senha. |
+| `usermod -U usuario` | Desbloqueia a conta | Destrava a conta removendo o "!" da senha. |
+
+
+
+
