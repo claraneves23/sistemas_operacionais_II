@@ -150,7 +150,19 @@ O FHS define a estrutura de diretórios do Linux, garantindo organização e pad
 <p align="center">
   <img src= "https://github.com/claraneves23/sistemas_operacionais_II/blob/main/Captura%20de%20tela%202025-03-11%20184951.png">
 </p>
- 
+
+- 🔵 = diretório
+- ⚪ = arquivo
+- 🔴 = arquivo compactado
+- 🟢 = link
+
+| Comando    |Descrição                    |
+|------------|-----------------------------|
+| ls ou ls . | exibe o diretório corrente  |
+| ls ..      | exibe o conteúdo do diretório anterior|
+| ls ~       | visualizar o diretório nativo sem se deslocar do diretório corrente |
+| ls -l     | listar arquivos pelo formato longo|
+
 
 
 
