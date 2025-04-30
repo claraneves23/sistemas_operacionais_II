@@ -197,7 +197,7 @@ touch <nome_do_arquivo>
 | `{}`           | Gera uma sequência de caracteres separados por vírgula.               | `arq{1,2,3}.txt`                  | Expande para `arq1.txt`, `arq2.txt`, `arq3.txt`    |
 
 
-## Aula 10 – Shell Script no Linux
+## Aula 09 – Shell Script no Linux
 
 ### Introdução
 
