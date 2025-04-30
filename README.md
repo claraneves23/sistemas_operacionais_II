@@ -139,9 +139,7 @@ reboot  # Reinicia o sistema imediatamente.
 
 O FHS define a estrutura de diretórios do Linux, garantindo organização e padronização do sistema.
 
-# Aula 03
-
-## Explorando o comando `ls`
+## Aula 03 - Explorando o comando `ls`
 
 - **Atenção** 🚨
 
@@ -196,6 +194,195 @@ touch <nome_do_arquivo>
 | `[]`           | Define uma lista de caracteres possíveis em uma posição.              | `arq[1-3].txt`                    | Encontra `arq1.txt`, `arq2.txt`, `arq3.txt`        |
 | `{}`           | Gera uma sequência de caracteres separados por vírgula.               | `arq{1,2,3}.txt`                  | Expande para `arq1.txt`, `arq2.txt`, `arq3.txt`    |
 
+## Aula 04 - Explorando o comando `cd`
+
+### Comando cd e seus parâmetros
+| Comando    |Descrição                    |
+|------------|-----------------------------|
+| cd  | serve para acessar e mudar de diretório corrente.​  |
+| cd /(caminho) |parte do raiz até o último diretório passado como referência.​ |
+| cd ..      | visualizar o diretório que está um nível acima. |
+| cd ~     | vai para o diretório nativo|
+| cd -     | retorna ao último diretório acessado. |
+
+### Estrutura de Diretórios (FHS)
+
+Use o comando tree para visualizar a estrutura de diretórios:
+
+```bash
+tree         # Mostra arquivos e pastas
+tree -d      # Mostra apenas diretórios
+
+```
+
+### Criação de Diretórios
+
+| Situação | Comando | Resultado |
+|---------|---------|-----------|
+| Criar um diretório | `mkdir trabalho` | Cria `/home/trabalho` |
+| Criar diretórios em árvore | `mkdir -p lista/atividade/tarefa` | Cria todos os diretórios em cadeia |
+| Criar múltiplos diretórios no mesmo nível | `mkdir licao1 licao2 licao3` | Cria três diretórios no mesmo nível |
+
+### Remoção de Diretórios
+
+#### Requisitos
+- Diretório deve estar vazio	
+- Estar um nível acima
+
+| Comando | Função |
+|--------|--------|
+| `rmdir nome` | Remove diretório vazio |
+| `rm nome` | Remove arquivo |
+| `rm -rf nome` | Remove diretório com tudo dentro (⚠️ sem confirmação) |
+
+### Comando pwd
+Mostra o caminho completo do diretório atual a partir da raiz.
+
+```bash
+pwd
+# Exemplo de saída:
+/home/fatec/CPD
+
+```
+
+## Aula 05 
+
+### Comando cp – Copiar Arquivos
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| *(sem parâmetro)* | Copia o arquivo com mesmo nome | `cp /proc/version /home/sistop` |
+| `-i` | Interativo – pede confirmação antes de sobrescrever | `cp -i version /home/sistop` |
+| `-f` | Força a cópia, mesmo que o arquivo exista | `cp -f version /home/sistop` |
+| `-b` | Cria backup do destino, adicionando `~` | `cp -b version /home/sistop` |
+| `-r` | Copia diretórios recursivamente | `cp -r pasta1/ /home/sistop` |
+| Usar novo nome | Copia e já renomeia o arquivo | `cp version versão` |
+| Vários arquivos | Copia múltiplos arquivos ao destino | `cp version versão version~ /home` |
+
+### Comando mv – Mover e/ou Renomear Arquivos
+
+| Exemplo| Descrição | 
+|-----------|-----------|
+|`mv versao /root`   | Move o arquivo com mesmo nome | 
+| `mv version teste` | Renomeia o arquivo no mesmo local |  
+| `mv version~ /root/novo`  | Move e renomeia ao mesmo tempo | 
+
+### Comando rm – Apagar Arquivos
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| `-i` | Interativo – pede confirmação para cada arquivo | `rm -i teste` |
+| `-f` | Força a exclusão sem perguntar | `rm -f v*` |
+| `-r` | Apaga diretórios e conteúdos recursivamente | `rm -r pasta1/` |
+| `-rf` | Remove diretórios e arquivos de forma forçada | `rm -rf trabalho/` |
+
+### Comando cat – Visualizar Arquivos
+
+| Combinação | Descrição | Exemplo |
+|------------|-----------|---------|
+| `cat` | Mostra o conteúdo completo de um arquivo | `cat /etc/passwd` |
+| `cat arquivo1 arquivo2` | Exibe múltiplos arquivos na sequência | `cat file1 file2` |
+
+## Aula 06 - Comandos úteis
+
+### Comando cal – Exibe o calendário
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| *(sem parâmetro)* | Mostra o mês atual | `cal` |
+| `<mês> <ano>` | Mostra o mês e ano especificado | `cal 12 2025` |
+| `<ano>` | Mostra o calendário do ano inteiro | `cal 2023` |
+
+### Comando date – Exibe ou altera data/hora
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| *(sem parâmetro)* | Mostra a data e hora atual | `date` |
+| `<MMDDhhmmYYYY>` | Define nova data/hora (root) | `date 082711412019` |
+| `hwclock -w` | Sincroniza relógio do sistema com hardware | `date 082711412019 (barra em pé) hwclock -w` |
+| `+%d/%m/%Y` | Mostra data formatada | `date "+%d/%m/%Y"` |
+
+### Comando lpr – Envia arquivos para impressão
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| `arquivo` | Envia o arquivo para impressora padrão | `lpr /etc/passwd` |
+| `cat arquivo | lpr` | Visualiza e imprime arquivo | `cat /etc/passwd | lpr` |
+| `-#n` | Imprime várias cópias | `lpr -#3 /etc/passwd` |
+
+### Comando finger – Mostra info de usuários
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| `login` | Exibe dados do usuário | `finger root` |
+| Vários usuários | Mostra vários perfis | `finger fatec dora` |
+
+### Comando history – Mostra histórico de comandos
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| *(sem parâmetro)* | Mostra histórico do terminal | `history` |
+| `-c` | Limpa o histórico atual | `history -c` |
+| `>> arquivo` | Salva histórico em arquivo | `history >> comandos.txt` |
+
+### Comando uptime – Mostra tempo ligado e carga
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| *(sem parâmetro)* | Mostra tempo de atividade do sistema | `uptime` |
+| `-V` | Mostra versão do comando | `uptime -V` |
+
+### Comando uname – Informações do sistema
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| `-p` | Tipo de processador | `uname -p` |
+| `-n` | Nome do host (rede) | `uname -n` |
+| `-s` | Nome do SO | `uname -s` |
+| `-v` | Versão do kernel | `uname -v` |
+| `-a` | Todas as informações | `uname -a` |
+
+### Comando free – Mostra uso de memória
+
+| Campo | Descrição |
+|-------|-----------|
+| `total` | Memória RAM total disponível |
+| `used` | Memória em uso real |
+| `free` | Memória completamente livre |
+| `shared` | Memória compartilhada entre apps |
+| `buffers/cache` | Áreas temporárias para desempenho |
+| `swap` | Espaço reservado no disco para memória virtual |
+
+```bash
+free -h     # Mostra valores em formato legível
+
+```
+### Comando top – Monitor de processos em tempo real
+
+| Campo | Descrição |
+|-------|-----------|
+| `PID` | ID do processo |
+| `USER` | Dono do processo |
+| `%CPU` | Uso da CPU |
+| `%MEM` | Uso da memória |
+| `RES` | Memória usada pelo processo |
+| `TIME+` | Tempo total de CPU utilizado |
+
+### Comando vi – Editor de texto
+
+| Comando | Ação | Exemplo |
+|---------|------|---------|
+| `vi` ou `vi nome` | Abre o vi (arquivo novo ou existente) | `vi texto.txt` |
+| `Esc + a` | Entra em modo de inserção | `a` |
+| `Esc + x` | Apaga caractere à esquerda |
+| `Esc + dd` | Apaga linha atual |
+| `Esc + :w nome` | Salva como novo nome | `:w texto2.txt` |
+| `Esc + :wq` | Salva e sai |
+| `Esc + :q!` | Sai sem salvar |
+
+###  Comando ln – Criar links simbólicos
+```bash
+ln -s texto1 texto
+```
 
 ## Aula 09 – Shell Script no Linux
 
