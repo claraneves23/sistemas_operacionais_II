@@ -383,6 +383,163 @@ free -h     # Mostra valores em formato legível
 ```bash
 ln -s texto1 texto
 ```
+## Aula 07 - Administração de Usuários e Grupos no Linux
+
+### Comando useradd – Criar usuário
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| *(sem parâmetro)* | Cria usuário com configurações padrão | `useradd joao` |
+| `-d /caminho` | Define diretório home do usuário | `useradd -d /projetos/joao joao` |
+| `-m` | Cria o diretório home se não existir | `useradd -m joao` |
+| `-s /bin/bash` | Define shell padrão do usuário | `useradd -s /bin/bash joao` |
+| `-c "comentário"` | Adiciona descrição sobre o usuário | `useradd -c "Novo funcionário" joao` |
+| `-G grupo1,grupo2` | Adiciona a grupos secundários | `useradd -G cpd,financeiro joao` |
+
+```
+Arquivos alterados automaticamente:
+/etc/passwd, /etc/shadow, /etc/group
+```
+
+### Comando passwd – Definir ou alterar senha
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| `<usuário>` | Define ou altera a senha | `passwd joao` |
+| `-l` | Bloqueia a conta do usuário | `passwd -l joao` |
+| `-u` | Desbloqueia a conta do usuário | `passwd -u joao` |
+
+### Comando userdel – Apagar usuário
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| `<usuário>` | Remove o usuário (sem deletar home) | `userdel joao` |
+| `rm -rf /home/usuario` | Remove o diretório home manualmente | `rm -rf /home/joao` |
+
+```
+O usuário não pode estar logado no momento da exclusão.
+Para sair: exit, logout ou Ctrl + D.
+```
+
+### Comando groupadd – Criar grupo
+
+```bash
+groupadd nome_do_grupo
+```
+
+### Comando gpasswd – Administrar grupos
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| `-a usuário grupo` | Adiciona usuário ao grupo | `gpasswd -a joao cpd` |
+| `-d usuário grupo` | Remove usuário do grupo | `gpasswd -d joao cpd` |
+| `grupo` | Define senha para grupo | `gpasswd cpd` |
+| `-r grupo` | Remove a senha do grupo | `gpasswd -r cpd` |
+| `-A user1,user2 grupo` | Define administradores do grupo | `gpasswd -A danilo,daphne cpd` |
+
+### Comando id – Verificar UID, GID e grupos
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| *(sem parâmetro)* | Mostra dados do usuário atual | `id` |
+| `<usuário>` | Mostra dados do usuário indicado | `id joao` |
+
+### Comando usermod – Modificar usuários
+
+| Parâmetro | Descrição | Exemplo |
+|-----------|-----------|---------|
+| `-G grupo` | Adiciona grupos secundários | `usermod -G cpd joao` |
+| `-g grupo` | Altera grupo primário | `usermod -g vendas joao` |
+| `-c "comentário"` | Altera campo de descrição | `usermod -c "TI Pleno" joao` |
+| `-d /novo/home -m` | Altera e move diretório home | `usermod -d /dados/joao -m joao` |
+| `-s /bin/zsh` | Altera shell padrão | `usermod -s /bin/zsh joao` |
+| `-L` | Bloqueia a conta (sem usar `passwd`) | `usermod -L joao` |
+| `-U` | Desbloqueia a conta | `usermod -U joao` |
+
+##  Aula 08 - Permissões de Arquivos no Linux
+
+Entendendo as permissões<br>
+Cada arquivo ou diretório possui:<br>
+
+- Proprietário (usuário)
+- Grupo<br>
+
+Permissões para:
+
+- Usuário (u)
+
+- Grupo (g)
+
+- Outros (o)
+  
+#### Exemplo do comando ls -l
+
+```bash
+ls -l texto.txt
+
+```
+
+Saída:
+
+```bash
+-rw-r--r-- 1 joao joao 0 abr 30 14:00 texto.txt
+
+```
+#### Explicação dos campos de permissão:
+
+| Posição | Significado | Descrição |
+|---------|-------------|-----------|
+| 1º caractere | Tipo de arquivo | `-` (arquivo), `d` (diretório), `c`, `b`, `s`, `p` |
+| 2-4 | Permissões do usuário | `rwx` (leitura, escrita, execução) |
+| 5-7 | Permissões do grupo | `r--` (somente leitura, por exemplo) |
+| 8-10 | Permissões de outros | `r--` (idem) |
+
+### Comando chmod – Alterar permissões
+
+### Modo Octal
+
+| Valor | Permissão | Significado |
+|-------|-----------|-------------|
+| `4` | `r` | Leitura |
+| `2` | `w` | Escrita |
+| `1` | `x` | Execução |
+| `0` | `-` | Sem permissão |
+
+### Modo Simbólico
+| Símbolo | Descrição | Exemplo |
+|--------|-----------|---------|
+| `u` | Usuário | `u-x` → remove execução do usuário |
+| `g` | Grupo | `g+x` → adiciona execução ao grupo |
+| `o` | Outros | `o+r` → adiciona leitura a outros |
+| `a` | Todos (u, g, o) | `a-w` → remove escrita de todos |
+
+| Operador | Função | Exemplo |
+|----------|--------|---------|
+| `+` | Adiciona permissão | `g+x` |
+| `-` | Remove permissão | `u-w` |
+| `=` | Define somente a permissão informada | `u=rwx,g=rw,o=x` |
+
+### Comando chown – Alterar dono e grupo
+
+| Sintaxe | Descrição | Exemplo |
+|--------|-----------|---------|
+| `chown novo_usuario arquivo` | Altera o dono | `chown jonathan relatorio.txt` |
+| `chown :novo_grupo arquivo` | Altera apenas o grupo | `chown :cpd relatorio.txt` |
+| `chown usuario:grupo arquivo` | Altera dono e grupo | `chown jonathan:cpd relatorio.txt` |
+
+```
+Precisa ser root. O novo dono deve estar no grupo, senão ocorre erro.
+```
+
+### Comando chgrp – Alterar grupo (sem root)
+
+| Sintaxe | Descrição | Exemplo |
+|--------|-----------|---------|
+| `chgrp grupo arquivo` | Altera grupo do arquivo | `chgrp cpd script.sh` |
+
+```
+O usuário deve fazer parte do grupo.
+```
 
 ## Aula 09 – Shell Script no Linux
 
