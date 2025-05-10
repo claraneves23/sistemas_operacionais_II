@@ -649,6 +649,130 @@ echo "Código: $codigo"
 
 ```
 
+## Aula 10 – Controle de Fluxo com if no Shell Script
+
+### Introdução ao `if`
+O if no shell script permite avaliar uma condição e executar um bloco de comandos conforme o resultado (verdadeiro ou falso).
+
+```bash
+if [ condição ]; then
+  # comandos se a condição for verdadeira
+fi
+```
+####  Exemplo: Verificação de Nome
+
+```bash
+#!/bin/bash
+
+# Solicita o nome do usuário
+read -p "Digite seu nome: " nome
+
+# Verifica se o nome foi fornecido
+if [ -z "$nome" ]; then
+  echo "Erro: Nome não fornecido."
+elif [ "$nome" == "Dora" ]; then
+  echo "Olá, professora!"
+else
+  echo "Olá, aluno(a)!"
+fi
+```
+
+### Operadores Numéricos e Lógicos
+
+| Tipo                | Operador | Significado                      |
+|---------------------|----------|----------------------------------|
+| Comparação Numérica | `-lt`    | Menor que (*Less Than*)          |
+| Comparação Numérica | `-gt`    | Maior que (*Greater Than*)       |
+| Comparação Numérica | `-le`    | Menor ou igual (*Less or Equal*) |
+| Comparação Numérica | `-ge`    | Maior ou igual (*Greater Equal*) |
+| Comparação Numérica | `-eq`    | Igual (*Equal*)                  |
+| Comparação Numérica | `-ne`    | Diferente (*Not Equal*)          |
+| Operador Lógico     | `!`      | NÃO lógico (*NOT*)               |
+| Operador Lógico     | `&&`     | E lógico (*AND*)                 |
+| Operador Lógico     | `II`     | OU lógico (*OR*)                 |
+
+
+### Cálculo com bc: Exemplo de IMC
+O bash não tem suporte nativo para ponto flutuante, por isso usamos o comando externo bc para fazer divisões decimais.
+
+```bash
+#!/bin/bash
+
+# Solicita peso e altura
+read -p "Digite o peso (kg): " peso
+read -p "Digite a altura (m): " altura
+
+# Cálculo do IMC com duas casas decimais
+imc=$(echo "scale=2; $peso/($altura*$altura)" | bc)
+
+echo "Seu IMC é: $imc"
+
+```
+
+| Termo     | Explicação                                                |
+| --------- | --------------------------------------------------------- |
+| `scale=2` | Define que queremos 2 casas decimais no resultado         |
+| `bc`      | Comando de calculadora básica para operações com precisão |
+
+###  Transformando número decimal em inteiro com sed
+O sed é um editor de texto que também pode ser usado para remover caracteres, como o ponto decimal.
+
+```bash
+numero="3.14"
+numero_inteiro=$(echo $numero | sed 's/\.//')
+
+echo $numero_inteiro  # Saída: 314
+```
+#### O que significa sed 's/\.//'
+
+| Parte do comando | Significado                           |
+| ---------------- | ------------------------------------- |
+| `s`              | Indica substituição                   |
+| `\.`             | Representa o ponto literal            |
+| `//`             | Substitui o ponto por "nada" (remove) |
+
+### Testes com Arquivos
+
+| Teste        | Significado                 |
+| ------------ | --------------------------- |
+| `-e arquivo` | Testa se o arquivo existe   |
+| `-f arquivo` | Testa se é um arquivo comum |
+| `-d arquivo` | Testa se é um diretório     |
+
+```bash
+read -p "Digite o nome do arquivo: " arquivo
+
+if [ -e "$arquivo" ]; then
+  echo "O arquivo existe!"
+  if [ -f "$arquivo" ]; then
+    echo "É um arquivo comum."
+  elif [ -d "$arquivo" ]; then
+    echo "É um diretório."
+  fi
+else
+  echo "Arquivo não encontrado."
+fi
+
+```
+
+### Estrutura `case` – Mais Limpa para Várias Opções
+
+A estrutura case é ideal quando você precisa tomar decisões com várias alternativas:
+
+```bash
+read -p "Escolha uma opção (a/b/c): " opcao
+
+case $opcao in
+  a) echo "Você escolheu A";;
+  b) echo "Você escolheu B";;
+  c) echo "Você escolheu C";;
+  *) echo "Opção inválida";;
+esac
+```
+
+
+
+
 
 
 
