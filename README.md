@@ -770,6 +770,95 @@ case $opcao in
 esac
 ```
 
+## Aula 11 - Laço de Repetição `for`
+
+O laço `for` em Shell Script é utilizado para executar um conjunto de comandos várias vezes, percorrendo uma lista de valores. É uma das estruturas de repetição mais comuns e versáteis no shell.
+
+### Sintaxe Básica
+
+```bash
+for VARIAVEL in LISTA
+do
+    COMANDOS
+done
+```
+
+- `VARIAVEL`: variável que receberá cada valor da lista.
+- `LISTA`: conjunto de elementos que serão atribuídos à variável.
+- `COMANDOS`: instruções que serão executadas a cada iteração.
+
+### Exemplos Práticos
+
+#### Exemplo 1: Tabuada
+
+Geração de uma tabuada simples:
+
+```bash
+for i in {1..10}
+do
+    echo "$i x 2 = $((i * 2))"
+done
+```
+
+#### Exemplo 2: Pirâmide Numérica
+
+Utilização de um laço `for` dentro de outro para formar uma pirâmide:
+
+```bash
+for i in {1..5}
+do
+    for j in $(seq 1 $i)
+    do
+        echo -n "$j "
+    done
+    echo
+done
+```
+
+#### Exemplo 3: Contar Itens em um Diretório
+
+```bash
+read -p "Informe o diretório: " dir
+if [ -d "$dir" ]; then
+    count=0
+    for item in "$dir"/*
+    do
+        count=$((count + 1))
+    done
+    echo "Total de itens no diretório: $count"
+else
+    echo "Diretório inválido."
+fi
+```
+
+#### Exemplo 4: Remover Extensão `.txt`
+
+```bash
+cd ~/TEXTO
+for file in *.txt
+do
+    nome=$(basename "$file" .txt)
+    mv "$file" "$nome"
+done
+```
+
+#### Exemplo 5: Backup de Arquivos
+
+```bash
+read -p "Diretório de origem: " origem
+read -p "Diretório de destino: " destino
+
+if [ -d "$origem" ] && [ -d "$destino" ]; then
+    for arquivo in "$origem"/*
+    do
+        cp "$arquivo" "$destino"
+    done
+    echo "Backup concluído com sucesso."
+else
+    echo "Diretórios inválidos."
+fi
+```
+
 
 
 
