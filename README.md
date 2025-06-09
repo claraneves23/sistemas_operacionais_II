@@ -1128,6 +1128,14 @@ paste [opções] [arquivo1 arquivo2 ...]
 paste -d "," nomes.txt notas.txt
 
 ```
+**ATENÇÃO**
 
+```
+man nome_do comando
+```
+- explica o comando e mostra os parâmetros dele.
 
-
+```
+man test
+```
+- mostra todos os parâmetros para testar um arquivo
