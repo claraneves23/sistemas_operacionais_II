@@ -859,6 +859,55 @@ else
 fi
 ```
 
+## Aula 12 - Laço de Repetição While
+
+### Sintaxe Básica
+```
+while [ condição ]
+do
+    # comandos
+done
+```
+
+O loop executa repetidamente os comandos enquanto a condição for verdadeira.
+Para loops infinitos, usa-se:
+
+```
+while true
+do
+    # comandos
+done
+```
+
+### Exemplo: Somando números até digitar -1
+Este script pede dois números inteiros e calcula sua soma. O processo se repete até o usuário digitar -1 em qualquer um dos números.
+
+```
+#!/bin/bash
+
+echo "=== Soma de números até digitar -1 ==="
+
+while true
+do
+    read -p "Digite o primeiro número (ou -1 para sair): " num1
+    if [ "$num1" -eq -1 ]; then
+        echo "Encerrando..."
+        break
+    fi
+
+    read -p "Digite o segundo número (ou -1 para sair): " num2
+    if [ "$num2" -eq -1 ]; then
+        echo "Encerrando..."
+        break
+    fi
+
+    soma=$((num1 + num2))
+    echo "A soma é: $soma"
+    echo
+done
+
+```
+
 
 
 
