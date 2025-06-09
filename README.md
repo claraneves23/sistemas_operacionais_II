@@ -908,19 +908,226 @@ done
 
 ```
 
+## Aula 13 - Argumentos no Shell Script
+
+###  Variáveis Especiais
+
+| Variável    | Descrição                                                           |
+| ----------- | ------------------------------------------------------------------- |
+| `$0`        | Nome do script que está sendo executado                             |
+| `$1`...`$9` | Argumentos individuais passados na execução (`$1`, `$2`, ..., `$9`) |
+| `$*`        | Todos os argumentos passados, como uma única string                 |
+| `$#`        | Número total de argumentos fornecidos                               |
+
+
+### Exemplo
+
+```
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Uso: $0 [argumentos...]"
+    echo "Exemplo: $0 nome email idade"
+    exit 1
+fi
+
+pos=1
+for arg in "$@"
+do
+    echo "Posição $pos: $arg"
+    pos=$((pos + 1))
+done
+
+```
+
+
+## Aula 13 - Comandos para Manipulação de Arquivos e Argumentos no Shell Script
+
+### Comando wc – Word Count
+Conta linhas, palavras, caracteres ou bytes de um arquivo.
+
+#### Sintaxe
+```
+wc [opções] [arquivo]
+
+```
+
+#### Parâmetros
+
+| Parâmetro   | Função                                   |
+| ----------- | ---------------------------------------- |
+| `-c`        | Conta os **bytes** do arquivo            |
+| `-l`        | Conta as **linhas**                      |
+| `-m`        | Conta os **caracteres**                  |
+| `-w`        | Conta as **palavras**                    |
+| `-L`        | Mostra o tamanho da **linha mais longa** |
+| `--help`    | Mostra ajuda                             |
+| `--version` | Mostra versão do utilitário              |
+
+
+### Comando cut
+Mostra partes específicas de uma linha de texto.
+
+#### Sintaxe
+
+```
+cut [parâmetros] [arquivo ou comando]
+
+```
+
+#### Parâmetros
+
+```
+| Parâmetro      | Descrição                                                 |
+| -------------- | --------------------------------------------------------- |
+| `-b`           | Seleciona **bytes** específicos                           |
+| `-c`           | Seleciona **caracteres** específicos                      |
+| `-d`           | Define o **delimitador** (ex: vírgula, ponto e vírgula)   |
+| `-f`           | Seleciona o **campo** (coluna)                            |
+| `--complement` | Pega tudo **exceto** os bytes/caracteres/campos indicados |
+| `-s`           | **Ignora linhas** sem o delimitador                       |
+
+```
+
+### Comando grep
+
+Procura por palavras ou padrões dentro de arquivos.
+
+```
+grep [opções] "texto" arquivo
+
+```
+
+#### Parametros
+
+| Parâmetro | Função                                             |
+| --------- | -------------------------------------------------- |
+| `-c`      | Conta quantas vezes a string aparece               |
+| `-v`      | Mostra todas as linhas que **não contêm** a string |
+| `-i`      | Ignora **maiúsculas/minúsculas**                   |
+| `-o`      | Mostra **apenas a string encontrada**              |
+| `-n`      | Mostra o **número da linha** onde encontrou        |
+| `-B`      | Mostra **linhas antes** da string                  |
+| `-A`      | Mostra **linhas depois** da string                 |
+| `-C`      | Mostra linhas antes e depois                       |
+| `-q`      | **Modo silencioso**, não imprime nada              |
+| `-l`      | Mostra **somente o nome do arquivo** com a string  |
+| `-L`      | Mostra **arquivos que não contêm** a string        |
+| `-r`      | Pesquisa **recursiva** em diretórios               |
+
+#### Exemplo
+
+```
+grep -n "erro" log.txt
+```
+
+### Comando tr – Translate or Delete Characters
+
+Traduz ou remove caracteres de uma entrada padrão.
+
+#### Sintaxe
+
+```
+tr [opções] conjunto1 [conjunto2]
+```
+
+#### Pamâmetros
+
+| Parâmetro | Função                                                              |
+| --------- | ------------------------------------------------------------------- |
+| `-c`      | Complementa (inverte) o conjunto1                                   |
+| `-d`      | **Deleta** os caracteres do conjunto1                               |
+| `-s`      | **Reduz** repetições consecutivas de um mesmo caractere para uma só |
+
+### Comando sed
+Utilitário para editar texto de forma não interativa (fluxo de texto).
+
+#### Parâmetros
+
+| Parâmetro | Função                                     |
+| --------- | ------------------------------------------ |
+| `-e`      | Permite executar **vários comandos**       |
+| `-n`      | Suprime a saída automática (usado com `p`) |
+| `-f`      | Lê comandos de um **arquivo externo**      |
+
+### Exemplo
+
+```
+sed 's/carro/bicicleta/g' arquivo.txt
+```
 
 
 
+### Comando uniq
+Filtra linhas duplicadas consecutivas de um arquivo.
+
+#### Sintaxe
+```
+uniq [opções] [arquivo]
+```
+#### Parâmetros
+
+| Parâmetro | Função                                            |
+| --------- | ------------------------------------------------- |
+| `-c`      | Mostra **quantidade de repetições**               |
+| `-d`      | Mostra apenas as **linhas duplicadas**            |
+| `-D`      | Mostra todas as **ocorrências duplicadas**        |
+| `-f N`    | Ignora os **N primeiros campos**                  |
+| `-i`      | Ignora **diferenciação de maiúsculas/minúsculas** |
+| `-s N`    | Ignora os **N primeiros caracteres**              |
+| `-u`      | Mostra apenas **linhas únicas**                   |
+| `-z`      | Termina linhas com **byte nulo**, não nova linha  |
+| `-w N`    | Compara apenas os **N primeiros caracteres**      |
+
+#### Exemplo
+```
+uniq -c nomes.txt
+```
+
+### Comando sort
+Ordena linhas de arquivos em ordem alfabética ou numérica.
+
+```
+sort [opções] [arquivo]
+```
+
+#### Parâmetros
+
+| Parâmetro | Função                                       |
+| --------- | -------------------------------------------- |
+| `-b`      | Ignora espaços em branco iniciais            |
+| `-d`      | Considera apenas **alfanuméricos e espaço**  |
+| `-f`      | Ignora diferenças de maiúsculas e minúsculas |
+| `-g`      | Usa **ordem numérica geral**                 |
+| `-r`      | **Ordem decrescente**                        |
+| `-n`      | **Ordem numérica aritmética**                |
+
+```
+sort -n notas.txt
+```
+
+### Comando paste
+Junta linhas de dois ou mais arquivos lado a lado.
+
+#### Sintaxe
+
+```
+paste [opções] [arquivo1 arquivo2 ...]
+```
+
+### Parâmetros
+
+| Parâmetro | Função                                    |
+| --------- | ----------------------------------------- |
+| `-d`      | Define o **delimitador** entre as colunas |
+| `-s`      | Junta **linhas de um arquivo por vez**    |
 
 
+### Exemplo
+```
+paste -d "," nomes.txt notas.txt
 
-
-
-
-
-
-
-
+```
 
 
 
